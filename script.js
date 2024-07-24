@@ -10,7 +10,7 @@ function gridCreator(divNum) {
         newDiv.className = "new-div";
         container.appendChild(newDiv);
         newDiv.style.flexBasis = `calc(100% / ${gridUnits})`;
-        i++;
+        i++;""
     }
     while (i < divNum);
 
@@ -18,8 +18,30 @@ function gridCreator(divNum) {
 gridCreator(divNum);
 
 let gridDivs = document.querySelectorAll(".new-div");
-gridDivs.forEach(elem => {
+gridDivs.forEach(elem => { /* how can I delegate this? */
     elem.addEventListener("mouseenter", () => {
         elem.style.backgroundColor = "red";
     })
 })
+
+let gridChangerBtn = document.querySelector(".grid-changer");
+function gridChanger() {
+    let sqrPrSide = prompt("How many squares per side do you want for the new grid? (100 max)", "");
+    let numSqrPrSide = Number(sqrPrSide);
+    container.innerHTML = "";
+    gridUnits = numSqrPrSide;
+    divNum = Math.pow(gridUnits, 2);
+    gridCreator(divNum); /* grid units */
+    let gridDivs = document.querySelectorAll(".new-div");
+    gridDivs.forEach(elem => { /* how can I delegate this? */
+    elem.addEventListener("mouseenter", () => {
+        elem.style.backgroundColor = "red";
+    })
+})
+}
+
+gridChangerBtn.addEventListener('click', gridChanger);
+
+// TODO: prompt cancel should return the default grid
+// TODO: handle empty prompt
+// TODO: reset button
