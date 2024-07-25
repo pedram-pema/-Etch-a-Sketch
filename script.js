@@ -43,7 +43,15 @@ gridDivs.forEach(elem => { /* how can I delegate this? */
 
 let gridChangerBtn = document.querySelector(".grid-changer");
 function gridChanger() {
-    let sqrPrSide = prompt("How many squares per side do you want for the new grid? (100 max)", "");
+    let sqrPrSide = prompt("How many squares per side do you want for the new grid?", "");
+    if (sqrPrSide > 100) {
+        alert("Grid can't have more than 100 squares per side, Enter smaller value");
+        gridChanger();
+    } else if (sqrPrSide == null) {
+        return;
+    } else if (sqrPrSide == "") {
+        return;
+    }
     let numSqrPrSide = Number(sqrPrSide);
     container.innerHTML = "";
     gridUnits = numSqrPrSide;
@@ -71,4 +79,5 @@ gridChangerBtn.addEventListener('click', gridChanger);
 // TODO: color changer enable/disable button
 // TODO: make mouse interact with squares by holding click
 // TODO: change color at the same time
+// TODO: fix flex-basis calculation
 // TODO: refactor
