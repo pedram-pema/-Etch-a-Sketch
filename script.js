@@ -25,9 +25,18 @@ function gridCreator(divNum) {
 }
 gridCreator(divNum);
 
+
 let gridDivs = document.querySelectorAll(".new-div");
 gridDivs.forEach(elem => { /* how can I delegate this? */
+    let opacity = 0;
+    function opaciter() {
+        opacity += 0.1;
+        return opacity.toString();
+    } /* why it doesn't work if these are outside */
+
     elem.addEventListener("mouseenter", () => {
+        
+        elem.style.opacity = opaciter();
         elem.style.backgroundColor = randomRgbStyle();
     })
 })
@@ -42,7 +51,13 @@ function gridChanger() {
     gridCreator(divNum); /* grid units */
     let gridDivs = document.querySelectorAll(".new-div");
     gridDivs.forEach(elem => { /* how can I delegate this? */
+    let opacity = 0;
+    function opaciter() {
+        opacity += 0.1;
+        return opacity.toString();
+    }
     elem.addEventListener("mouseenter", () => {
+        elem.style.opacity = opaciter();
         elem.style.backgroundColor = randomRgbStyle();
     })
 })
