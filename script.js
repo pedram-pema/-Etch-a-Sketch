@@ -25,7 +25,6 @@ function gridCreator(divNum) {
 }
 gridCreator(divNum);
 
-
 let gridDivs = document.querySelectorAll(".new-div");
 gridDivs.forEach(elem => { /* how can I delegate this? */
     let opacity = 0;
@@ -73,6 +72,26 @@ function gridChanger() {
 
 gridChangerBtn.addEventListener('click', gridChanger);
 
+let resetBtn = document.querySelector(".reset");
+resetBtn.addEventListener("click", () => {
+    container.innerHTML = "";
+    gridCreator(divNum);
+    let gridDivs = document.querySelectorAll(".new-div");
+    gridDivs.forEach(elem => { /* how can I delegate this? */
+        let opacity = 0;
+        function opaciter() {
+            opacity += 0.1;
+            return opacity.toString();
+        } /* why it doesn't work if these are outside */
+    
+        elem.addEventListener("mouseenter", () => {
+            
+            elem.style.opacity = opaciter();
+            elem.style.backgroundColor = randomRgbStyle();
+        })
+    })
+});
+
 // TODO: prompt cancel should return the default grid
 // TODO: handle empty prompt
 // TODO: reset button
@@ -81,3 +100,5 @@ gridChangerBtn.addEventListener('click', gridChanger);
 // TODO: change color at the same time
 // TODO: fix flex-basis calculation
 // TODO: refactor
+// FIX: above 100 then 12
+// FIX: Reset must set a 16x16
