@@ -6,6 +6,8 @@ function randomRgbStyle() {
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
 
+    // Can I loop this?
+
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
@@ -75,6 +77,8 @@ gridChangerBtn.addEventListener('click', gridChanger);
 let resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", () => {
     container.innerHTML = "";
+    gridUnits = 16;
+    divNum = Math.pow(gridUnits, 2);
     gridCreator(divNum);
     let gridDivs = document.querySelectorAll(".new-div");
     gridDivs.forEach(elem => { /* how can I delegate this? */
@@ -102,3 +106,6 @@ resetBtn.addEventListener("click", () => {
 // TODO: refactor
 // FIX: above 100 then 12
 // FIX: Reset must set a 16x16
+// TODO: change mouse hold to toggle
+// TODO: Add eraser button
+// TODO: Add a color palette
