@@ -1,18 +1,20 @@
 let gridUnits = 16;
 let divNum = Math.pow(gridUnits, 2);
 
+/* take gridUnits and divNum into gridCreator
+take flex 1 from styles to js */
+
 function randomRgbStyle() {
+    
     let red = Math.floor(Math.random() * 256);
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
-
-    // Can I loop this?
 
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
 let container = document.querySelector(".container");
-function gridCreator(divNum) {
+function gridCreator(divNum) { /* Dynamic grid creator */
 
     let i = 0;
     do {
@@ -20,7 +22,7 @@ function gridCreator(divNum) {
         newDiv.className = "new-div";
         container.appendChild(newDiv);
         newDiv.style.flexBasis = `calc(100% / ${gridUnits})`;
-        i++;""
+        i++;
     }
     while (i < divNum);
 
@@ -28,7 +30,8 @@ function gridCreator(divNum) {
 gridCreator(divNum);
 
 let gridDivs = document.querySelectorAll(".new-div");
-gridDivs.forEach(elem => { /* how can I delegate this? */
+// Wrap below inside a function:
+gridDivs.forEach(elem => {
     let opacity = 0;
     function opaciter() {
         opacity += 0.1;
@@ -59,7 +62,7 @@ function gridChanger() {
     divNum = Math.pow(gridUnits, 2);
     gridCreator(divNum); /* grid units */
     let gridDivs = document.querySelectorAll(".new-div");
-    gridDivs.forEach(elem => { /* how can I delegate this? */
+    gridDivs.forEach(elem => {
     let opacity = 0;
     function opaciter() {
         opacity += 0.1;
@@ -81,7 +84,7 @@ resetBtn.addEventListener("click", () => {
     divNum = Math.pow(gridUnits, 2);
     gridCreator(divNum);
     let gridDivs = document.querySelectorAll(".new-div");
-    gridDivs.forEach(elem => { /* how can I delegate this? */
+    gridDivs.forEach(elem => {
         let opacity = 0;
         function opaciter() {
             opacity += 0.1;
@@ -96,16 +99,14 @@ resetBtn.addEventListener("click", () => {
     })
 });
 
-// TODO: prompt cancel should return the default grid
-// TODO: handle empty prompt
-// TODO: reset button
+// TODO: Add current dimensions to top of grid
+// TODO: Change buttons layout: layout and button's width
 // TODO: color changer enable/disable button
 // TODO: make mouse interact with squares by holding click
-// TODO: change color at the same time
+// TODO: change color on the grid without erasing
 // TODO: fix flex-basis calculation
 // TODO: refactor
 // FIX: above 100 then 12
-// FIX: Reset must set a 16x16
 // TODO: change mouse hold to toggle
 // TODO: Add eraser button
 // TODO: Add a color palette
