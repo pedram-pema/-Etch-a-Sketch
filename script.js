@@ -51,6 +51,7 @@ function gridChanger() {
     if (sqrPrSide > 100) {
         alert("Grid can't have more than 100 squares per side, Enter smaller value");
         gridChanger();
+        return;
     } else if (sqrPrSide == null) {
         return;
     } else if (sqrPrSide == "") {
@@ -110,3 +111,4 @@ resetBtn.addEventListener("click", () => {
 // TODO: change mouse hold to toggle
 // TODO: Add eraser button
 // TODO: Add a color palette
+// TODO: Add (y) x (z) and total and amount of colored
