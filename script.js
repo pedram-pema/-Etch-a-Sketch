@@ -1,8 +1,6 @@
 let container = document.querySelector(".container");
 function gridCreator(gridUnits = 16) { /* Dynamic grid creator */
-
     let divNum = Math.pow(gridUnits, 2);
-
     let i = 0;
     do {
         let newDiv = document.createElement('div');
@@ -12,35 +10,31 @@ function gridCreator(gridUnits = 16) { /* Dynamic grid creator */
         i++;
     }
     while (i < divNum);
-
 }
 gridCreator();
 
 function randomRgbStyle() {
-    
     let red = Math.floor(Math.random() * 256);
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
-
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
-let gridDivs = document.querySelectorAll(".new-div");
-// Wrap below inside a function:
-gridDivs.forEach(elem => {
-    
-    let opacity = 0;
-    function opaciter() {
-        opacity += 0.1;
-        return opacity.toString();
-    }
-
-    elem.addEventListener("mouseenter", () => {
-        
-        elem.style.opacity = opaciter();
-        elem.style.backgroundColor = randomRgbStyle();
-    })
-})
+function styler() {
+    let gridDivs = document.querySelectorAll(".new-div");
+    gridDivs.forEach(elem => {
+        let opacity = 0;
+        function opaciter() {
+            opacity += 0.1;
+            return opacity.toString();
+        }
+        elem.addEventListener("mouseenter", () => {   
+            elem.style.opacity = opaciter();
+            elem.style.backgroundColor = randomRgbStyle();
+        })
+    })   
+}
+styler();
 
 let gridChangerBtn = document.querySelector(".grid-changer");
 function gridChanger() {
@@ -54,43 +48,15 @@ function gridChanger() {
     }
     container.innerHTML = "";
     gridCreator(sqrPrSide);
-    let gridDivs = document.querySelectorAll(".new-div");
-    gridDivs.forEach(elem => {
-        
-        let opacity = 0;
-        function opaciter() {
-            opacity += 0.1;
-            return opacity.toString();
-        }
-        
-        elem.addEventListener("mouseenter", () => {
-            elem.style.opacity = opaciter();
-            elem.style.backgroundColor = randomRgbStyle();
-        })
-})
+    styler();
 }
-
 gridChangerBtn.addEventListener('click', gridChanger);
 
 let resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", () => {
     container.innerHTML = "";
     gridCreator();
-    let gridDivs = document.querySelectorAll(".new-div");
-    gridDivs.forEach(elem => {
-
-        let opacity = 0;
-        function opaciter() {
-            opacity += 0.1;
-            return opacity.toString();
-        }
-    
-        elem.addEventListener("mouseenter", () => {
-            
-            elem.style.opacity = opaciter();
-            elem.style.backgroundColor = randomRgbStyle();
-        })
-    })
+    styler();
 });
 
 // TODO: Add current dimensions to top of grid
