@@ -10,6 +10,10 @@ function gridCreator(gridUnits = 16) { /* Dynamic grid creator */
         i++;
     }
     while (i < divNum);
+    let squaresDisplay = document.querySelector(".squares-display");
+    let divs = document.querySelectorAll(".new-div");
+    let rows = Math.sqrt(divs.length);
+    squaresDisplay.textContent = `${rows}x${rows}`; 
 }
 gridCreator();
 
